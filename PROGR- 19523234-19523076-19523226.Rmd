@@ -1,0 +1,83 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+#function
+
+#A
+f1 <- function (x){
+  fx<- x^3 + x^2-6
+  return (fx)
+}
+input <- seq(-20 : 20)
+plot (input,
+      sapply(input,f1),
+      type = "l", xlab = "x",
+      ylab ="f(x)")
+```
+```{r}
+f2 <- function (x){
+  fx<- -x^2 - 6
+  return (fx)
+}
+input <- seq(-15 : 25)
+plot (input,
+      sapply(input,f2),
+      type = "l", xlab = "x",
+      ylab ="f(x)")
+```
+```{r}
+U <- c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19)
+B <- c(2,3,5,7,11,13,17,19)
+C <- c(2,4,6,8,10,12,14,16,18)
+A <- c(2,3,4,5,6,7,8,9,10)
+
+U
+B
+C
+A
+```
+
+```{r}
+AuB <- union(A,B)
+AuB
+```
+
+```{r}
+union (AuB,C)
+```
+
+
+```{r}
+install.packages('Ryacas')
+install.packages('Ryacas0')
+library(Ryacas)
+library(Ryacas0)
+```
+
+```{r}
+#limit
+yac_str("Limit(x,1)(x^2-1)/(x-1)")
+
+```
+```{r}
+limit <- yac_str("Limit(x,0) ((x^4-x^2)/(x^3+x^2)) * ((sin(x))/(x)) + cos(x)")
+limit
+```
+
+
+```{r}
+#diferensiasi
+yac_expr("D(x) (sin(x)^2/x^2)*(x+1)")
+```
+
+```{r}
+#integral
+library(Ryacas0)
+
+x <- Sym("x")
+Integrate(x^2*cos(x^3 + pi)*sin(x^3+pi), x)
+```
+
